@@ -11,28 +11,47 @@
 </head>
 
 <body>
- 
+
+
     <div class="container">
         <div class="col">
             <div class="col-md-6">
-            <form action="index.php?People" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" class="form-control"  
-                        placeholder="Name">
-                   
-                </div>
-                <div class="form-group">
-                    <label>CPF</label>
-                    <input type="number" name="cpf" class="form-control"  placeholder="CPF">
-                </div>
-                <div class="form-group">
-                    <label>Age</label>
-                    <input type="number" name="age" class="form-control"  placeholder="Age">
-                </div>
-                
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <form action="index.php?People" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Name">
+
+                    </div>
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="number" name="cpf" class="form-control" placeholder="CPF">
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="age" class="form-control" placeholder="Age">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <!-- <label for="inputState">User</label> -->
+                        <select id="inputState" class="form-control" name="typePerson">
+                            <option value="user">User</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">User</label>
+                        <input type="text" class="form-control" name="user"
+                            placeholder="User">
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="background-color:black">Submit</button>
+                </form>
             </div>
         </div>
     </div>
