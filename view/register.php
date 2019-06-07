@@ -13,6 +13,8 @@
 <body>
 
 
+
+
     <div class="container">
         <div class="col">
             <div class="col-md-6">
@@ -33,21 +35,26 @@
 
                     <div class="form-group col-md-4">
                         <!-- <label for="inputState">User</label> -->
-                        <select id="inputState" class="form-control" name="typePerson">
+                        <select onchange="yesnoCheck(this);" id="inputState" class="form-control" name="typePerson">
                             <option value="user">User</option>
-                            <option value="employee">Employee</option>
+                            <option id="employee" value="employee">Employee</option>
                         </select>
+                    </div>
+
+                    <div id="ifYes" style="display: none;" class="form-group">
+                        <label>Money</label>
+                        <input type="number" name="money" class="form-control" placeholder="Money">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">User</label>
-                        <input type="text" class="form-control" name="user"
-                            placeholder="User">
-                    
+                        <input type="text" class="form-control" name="user" placeholder="User">
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                            name="password">
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="background-color:black">Submit</button>
@@ -56,7 +63,16 @@
         </div>
     </div>
 
-
+    <script>
+        function yesnoCheck(that) {
+            if (that.value == "employee") {
+                alert("New Info added, check the input.");
+                document.getElementById("ifYes").style.display = "block";
+            } else {
+                document.getElementById("ifYes").style.display = "none";
+            }
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>

@@ -2,6 +2,7 @@
 
 require_once "model/People.php";
 require_once "model/User.php";
+require_once "model/Employee.php";
 require_once "model/conMySQL.php";
 
 class PeopleController{
@@ -20,6 +21,7 @@ class PeopleController{
                 $age = $_POST['age'];
                 $cpf = $_POST['cpf'];
                 $user = $_POST['user'];
+                $money = $_POST['money'];
                 $password = password_hash ($_POST['password'], PASSWORD_DEFAULT);
 
                 if ($typePerson == "user") {
@@ -41,7 +43,19 @@ class PeopleController{
                     // $newUser->setName($_POST['name']);
                     // $newUser->setAge($_POST['age']);
                     // $newUser->setCpf($_POST['cpf']);
+                }else {
+                    $newEmployee = new Employees($name, $age, $cpf,$user,$password,$money);
+                  
+                   if($newEmployee->registerPeople($con, $newEmployee)){
+                    $_REQUEST['person'] = $newEmployee;
+
+                    require_once "view/success.php";
+
+                   }else{
+                       echo "NOOOOOO";
+                   }
                 }
+                
 
            
 
