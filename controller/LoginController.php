@@ -9,7 +9,7 @@ require_once "model/conMySQL.php";
 class LoginController{
 	public function view($server){
             global $con;
-
+            
         switch ($server) {
             case 'GET':
                 require_once "view/login.php";
@@ -19,11 +19,31 @@ class LoginController{
             $user = $_POST['user'];
             $password = $_POST['password'];
 
-            $query = $con->prepare("SELECT * FROM users WHERE user=?");
-            $query->execute([$user]);
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query = $con->prepare("SELECT * FROM users WHERE user=:user");
+            $query->execute(["user" => $user]);
+            $result = $query->fetch(PDO::FETCH_ASSOC);
 
-            var_dump($result);
+           if (count($result) <=0) {
+               echo "No exist";
+               exit;
+           } else {
+               if(password_verify($password, $result['password'])){
+                   
+                        $person = new Users(
+                            $result['name'],
+                            $result['age'],
+                            $result['cpf'],
+                            $result['user'],
+                            $result['password']
+                        );
+                   
+                    $_REQUEST['person'] = $person;
+                    require_once "view/success.php";
+               }else {
+                   echo "That's wrong";
+                   exit;
+               }
+           }
 
 
                 break;
